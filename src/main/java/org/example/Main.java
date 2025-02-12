@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,5 +31,30 @@ public class Main {
         people.add(p3);
         fridayLovers = people.getPeopleByFavDay(DaysOfWeek.FRIDAY);
         System.out.println(fridayLovers);
+        System.out.println("---- Task 6 ----");
+        List<Integer> intList = new ArrayList<>();
+        for(int i = 0 ; i < 13 ; i++) {
+            intList.add(i);
+        }
+        intList.stream()
+                .filter(number -> number % 2 == 0)
+                .forEach(System.out::println);
+        System.out.println("---- Task 7 ----");
+        intList.stream().map(num -> num * 2).forEach(System.out::println);
+        intList.stream()
+                .sorted(Comparator.reverseOrder()) // Sort in descending order
+                .forEach(System.out::println);
+        System.out.println("---- Task 8 ----");
+        intList.stream()
+                .sorted() // Sort in ascending order (natural order)
+                .forEach(System.out::println);
+        int sum = intList.stream().reduce(0, Integer::sum);
+        System.out.println("Sum of all numbers: " + sum);
+
+        List<Integer> processedList = intList.stream()
+                .map(num -> num * 2)
+                .toList();
+        System.out.println("Processed list: " + processedList);
+
     }
 }
