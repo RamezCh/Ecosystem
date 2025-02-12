@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -11,8 +12,8 @@ public class Main {
         System.out.println(today.getWeekday());
 
         System.out.println("---- Task 2 ----");
-        Person p1 = new Person("1", "Person1", DaysOfWeek.FRIDAY);
-        Person p2 = new Person("2", "Person2", DaysOfWeek.MONDAY);
+        Person p1 = new Person("1", "Person1", Gender.MALE, DaysOfWeek.FRIDAY);
+        Person p2 = new Person("2", "Person2", Gender.MALE, DaysOfWeek.MONDAY);
         Map<String, Person> peopleMap = new HashMap<>();
         peopleMap.put(p1.ID(), p1);
         peopleMap.put(p2.ID(), p2);
@@ -25,5 +26,17 @@ public class Main {
         if(search1.isPresent()) {
             System.out.println(search1.get().name() + "'s favorite day is " + search1.get().favoriteDay());
         }
+        System.out.println("---- Task 3 ----");
+        people.genderCount();
+        System.out.println("---- Task 4 ----");
+        System.out.println(people.getPersonByName("Person1"));
+        System.out.println(people.getPersonByName("Person3"));
+        System.out.println("---- Task 5 ----");
+        List<Person> fridayLovers = people.getPeopleByFavDay(DaysOfWeek.FRIDAY);
+        System.out.println(fridayLovers);
+        Person p3 = new Person("3", "Person3", Gender.MALE, DaysOfWeek.FRIDAY);
+        people.add(p3);
+        fridayLovers = people.getPeopleByFavDay(DaysOfWeek.FRIDAY);
+        System.out.println(fridayLovers);
     }
 }
