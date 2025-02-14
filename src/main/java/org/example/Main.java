@@ -4,6 +4,30 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        Student kevin = new Student("1", "Kevin", "Deutschland", 80);
+        Student nivek = new Student();
+        Teacher florian = new Teacher("1", "Florian", "java");
+        List<Student> students = List.of(kevin, nivek);
+        Course java = new Course("1", "java", florian, students);
+        System.out.println(java.getId());
+        System.out.println(java.getName());
+        System.out.println(java.getTeacher());
+        System.out.println(java.getStudents());
+        System.out.println(java);
+        System.out.println(kevin.getName());
+        System.out.println(kevin.getAddress());
+        System.out.println(kevin);
+
+        Teacher martin = florian.withId("2").withName("Martin");
+        System.out.println(martin);
+
+        Student builder = Student.builder()
+                .id("3").name("builder")
+                .address("Builder Town")
+                .grade(60).build();
+        System.out.println(builder);
+        System.out.println(builder.getAddress());
+        /*
         System.out.println("---- Task 1 ----");
         DaysOfWeek today = DaysOfWeek.WEDNESDAY;
         System.out.println(today.getWeekday());
@@ -55,6 +79,6 @@ public class Main {
                 .map(num -> num * 2)
                 .toList();
         System.out.println("Processed list: " + processedList);
-
+        */
     }
 }
