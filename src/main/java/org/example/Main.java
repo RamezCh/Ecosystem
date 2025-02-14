@@ -27,6 +27,13 @@ public class Main {
                 .grade(60).build();
         System.out.println(builder);
         System.out.println(builder.getAddress());
+
+        University uni = new University("1", "uni", List.of(java));
+        UniversityService service = new UniversityService();
+        System.out.println(service.calculateAvgGradeOfCourse(java));
+        System.out.println(service.calculateUniAvgGrade(uni));
+        System.out.println(service.getStudentsWithMinGrade(uni, 80));
+        System.out.println(service.getStudentsWithMinGrade(uni, 81));
         /*
         System.out.println("---- Task 1 ----");
         DaysOfWeek today = DaysOfWeek.WEDNESDAY;
